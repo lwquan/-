@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>个人中心</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/swiper-3.4.2.min.js"></script>
+	</head>
+	<body>
+	
+		<div class="container">
+			<div class="logo">
+				<img src="img/logo.png" />
+			</div>
+			<div class="juan-main">
+				<div class="head">
+					<img src="img/about_img1.PNG" />
+					<div class="head-fr">
+						<input type="file" name="uploadPicture" id="file" value="" title="上传照片" onchange="getPhoto(this)"/>  						
+						<p class="name">用户名：喇叭网</p>
+						<p class="date">注册时间：2017-05-07</p>
+					</div>
+				</div>
+				
+				<div class="text">
+					<div class="tab_content">
+						<div class="juan-content">
+							<div class="juan">
+								<div class="juan-fl">
+									<p class="big">
+										芯片货款代金券
+									</p>
+									<p class="small">券值RMB1000元</p>
+								</div>
+								<div class="juan-fr">
+									<span>已领取</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="guize">
+						<ul>
+							<li>代金券使用规则：</li>
+							<li>1、 新客户，当月累计订单金额满2万元可使用。</li>
+							<li>2、 老客户，当月累计订单金额满3万元可使用。</li>
+							<li>3、 适用产品：OK B432/512系列、KYO TK1150/5220系列、XER 6510/C400系列及其它新品</li>
+							<li>4、 不限制有效期，解释权归珠海天威技术开发有限公司所有。</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script type="text/javascript">  
+    var imgurl = "";  
+    function getPhoto(node) {  
+    	
+        var imgURL = "";  
+        try{  
+            var file = null;  
+            if(node.files && node.files[0] ){  
+                file = node.files[0];  
+            }else if(node.files && node.files.item(0)) {  
+                file = node.files.item(0);  
+            }  
+            //Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径  
+            try{  
+                imgURL =  file.getAsDataURL();  
+            }catch(e){  
+                imgRUL = window.URL.createObjectURL(file);  
+            }  
+        }catch(e){  
+            if (node.files && node.files[0]) {  
+                var reader = new FileReader();  
+                reader.onload = function (e) {  
+                    imgURL = e.target.result;  
+                };  
+                reader.readAsDataURL(node.files[0]);  
+            }  
+        }  
+        creatImg(imgRUL);  
+        console.log(imgRUL)
+        return imgURL;  
+    }  
+  
+    function creatImg(imgRUL){  
+//      var textHtml = "<img src='"+imgRUL+"'width='414px' height='600px'/>";  
+          $(".head img").attr("src",imgRUL);   
+    }  
+</script>  
+		<!--<script type="text/javascript">
+			var imgurl = "";  
+			    function getPhoto(node) {  
+			        var imgURL = "";  
+			        try{  
+			            var file = null;  
+			            if(node.files && node.files[0] ){  
+			                file = node.files[0];  
+			            }else if(node.files && node.files.item(0)) {  
+			                file = node.files.item(0);  
+			            }  
+			            //Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径  
+			            try{  
+			                imgURL =  file.getAsDataURL();  
+			            }catch(e){  
+			                imgRUL = window.URL.createObjectURL(file);  
+			            }  
+			        }catch(e){  
+			            if (node.files && node.files[0]) {  
+			                var reader = new FileReader();  
+			                reader.onload = function (e) {  
+			                    imgURL = e.target.result;  
+			                };  
+			                reader.readAsDataURL(node.files[0]);  
+			            }  
+			        }  
+			        creatImg(imgRUL);  
+			        return imgURL;  
+			    }  
+			  
+			    function creatImg(imgRUL){  
+//			        var textHtml = "<img src='"+imgRUL+"'width='414px' height='600px'/>";  
+			        $(".img img").attr("src",imgRUL);  
+			    }  
+			
+		</script>
+	-->
+	</body>
+
+</html>
